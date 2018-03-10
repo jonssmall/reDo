@@ -17,6 +17,7 @@ export default class TodoContainer extends React.Component
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.sortList = this.sortList.bind(this);
   }
 
   handleComplete(todo) {
@@ -48,6 +49,12 @@ export default class TodoContainer extends React.Component
       todos: newList
     });
   }
+
+  sortList() {
+    this.setState({
+      todos: this.state.todos.sort((x,y) => x.complete - y.complete)
+    });
+  }
   
   render() {
     return (
@@ -59,6 +66,7 @@ export default class TodoContainer extends React.Component
           deleteTodo={this.handleDelete} 
           editTodo={this.handleEdit}
         />
+        <button onClick={this.sortList}>Sort</button>
       </div>
     )
   }
