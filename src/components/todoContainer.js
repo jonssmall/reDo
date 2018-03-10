@@ -15,6 +15,7 @@ export default class TodoContainer extends React.Component
     };
     this.handleComplete = this.handleComplete.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleComplete(todo) {
@@ -31,12 +32,19 @@ export default class TodoContainer extends React.Component
       todos: newList
     });
   }
+
+  handleDelete(todo) {
+    const newList = this.state.todos.filter(t => t !== todo);
+    this.setState({
+      todos: newList
+    });
+  }
   
   render() {
     return (
       <div>
         <TodoAddForm submitForm={this.handleCreate} />
-        <TodoView todoData={this.state.todos} clickTodo={this.handleComplete} />
+        <TodoView todoData={this.state.todos} clickTodo={this.handleComplete} deleteTodo={this.handleDelete} />
       </div>
     )
   }
