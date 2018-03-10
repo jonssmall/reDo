@@ -7,12 +7,11 @@ const todos = (props) => {
       textDecoration: t.complete ? 'line-through' : 'none'
     };
     const itemProps = {
-      key: i,
       onClick: () => props.clickTodo(t),
       style
     };
     return (
-      <li>
+      <li key={i}>
         <span {...itemProps}>
           {t.task}
         </span>

@@ -1,6 +1,7 @@
 "use strict";
 import React from 'react';
 import TodoView from './todoView';
+import TodoAddForm from './todoAddForm';
 
 export default class TodoContainer extends React.Component
 {
@@ -13,6 +14,7 @@ export default class TodoContainer extends React.Component
       ]
     };
     this.handleComplete = this.handleComplete.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
   }
 
   handleComplete(todo) {
@@ -22,8 +24,20 @@ export default class TodoContainer extends React.Component
       todos: newList
     });
   }
+
+  handleCreate(newTodo) {
+    const newList = [...this.state.todos, newTodo];
+    this.setState({
+      todos: newList
+    });
+  }
   
   render() {
-    return <TodoView todoData={this.state.todos} clickTodo={this.handleComplete} />
+    return (
+      <div>
+        <TodoAddForm submitForm={this.handleCreate} />
+        <TodoView todoData={this.state.todos} clickTodo={this.handleComplete} />
+      </div>
+    )
   }
 }
