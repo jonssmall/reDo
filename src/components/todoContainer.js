@@ -67,6 +67,9 @@ export default class TodoContainer extends React.Component
           editTodo={this.handleEdit}
         />
         <button onClick={this.sortList}>Sort</button>
+        <br />
+        <p>Hint: click todo to toggle completion.</p>
+        <a target="_blank" href="https://github.com/jonssmall/reDo">Github Repo</a>
       </div>
     )
   }
