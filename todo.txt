@@ -1,0 +1,10 @@
+Spec:
+1. Display a list of todo items
+2. A todo item in the "Completed" state has a line-through style applied.
+3. Clicking a todo toggles its "Completed" state
+4. Add a todo through a form field.
+5. Delete a todo item with a confirmation dialogue.
+
+Stretch goals:
+6. Edit a todo item
+7. Sort by complete / incomplete
