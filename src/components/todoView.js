@@ -2,15 +2,28 @@
 import React from 'react';
 
 const todos = (props) => {
-  return props.todoData.map(t => {
+  const viewItems = props.todoData.map((t,i) => {
+    const style = {
+      textDecoration: t.complete ? 'line-through' : 'none'
+    };
+    const itemProps = {
+      key: i,
+      onClick: () => props.clickTodo(t),
+      style
+    };
     return (
-      <div>
-        <span onClick={() => props.clickTodo(t)}>
-          {t.task} complete: {String(t.complete)}
+      <li>
+        <span {...itemProps}>
+          {t.task}
         </span>
-      </div>
+      </li>
     );
   });
+  return (
+    <ul>
+      {viewItems}
+    </ul>
+  )
 };
 
 export default todos;
