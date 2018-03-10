@@ -15,11 +15,19 @@ const todos = (props) => {
       if (confirm("Are you sure you want to delete this task?")) props.deleteTodo(todo);
     }
 
+    function editTask (todo) {
+      const newText = prompt("Rewrite new task text");
+      if (newText) {
+        props.editTodo(todo, newText);
+      }
+    }
+
     return (
       <li key={i}>
         <span {...itemProps}>
           {t.task}
         </span>
+        <button onClick={() => editTask(t)}>Edit</button>
         <button onClick={() => confirmDelete(t)}>Delete</button>
       </li>
     );
